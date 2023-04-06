@@ -24,6 +24,7 @@ const Start = ({ navigation }) => {
             onChangeText={setName}
             placeholder='Enter your name'
             placeholderTextColor='#8e8e8e'
+            accessibilityLabel="Enter your name"
           />
           <View>
             <Text style={styles.colorSelector} >Choose your Background:</Text>
@@ -31,24 +32,31 @@ const Start = ({ navigation }) => {
               <TouchableOpacity
                 style={[styles.colorButton, { backgroundColor: '#FFFFFF' }]}
                 onPress={() => handleColorPress('#FFFFFF')}
+                accessibilityLabel="White background"
               />
               <TouchableOpacity
                 style={[styles.colorButton, { backgroundColor: '#C1C1C1' }]}
                 onPress={() => handleColorPress('#C1C1C1')}
+                accessibilityLabel="Gray background"
               />
               <TouchableOpacity
                 style={[styles.colorButton, { backgroundColor: '#FFC0CB' }]}
                 onPress={() => handleColorPress('#FFC0CB')}
+                accessibilityLabel="Pink background"
               />
               <TouchableOpacity
                 style={[styles.colorButton, { backgroundColor: '#87CEFA' }]}
                 onPress={() => handleColorPress('#87CEFA')}
+                accessibilityLabel="Blue background"
               />
             </View>
           </View>
           <Button
             title='Start Chatting'
-            onPress={() => navigation.navigate('Chat', { name: name, bgColor: bgColor })}/>
+            onPress={() => navigation.navigate('Chat', { name: name, bgColor: bgColor })}
+            accessibilityLabel="Start chatting"
+            accessibilityRole="button"
+            />
 
         </View>
       </ImageBackground>
