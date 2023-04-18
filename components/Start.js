@@ -1,12 +1,28 @@
 import { useState } from 'react';
-import { StyleSheet, TouchableOpacity, View, Text, Button, TextInput, ImageBackground } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Text, Button, TextInput, ImageBackground, Alert } from 'react-native';
+import { getAuth, signInAnonymously } from "firebase/auth";
 
 const Start = ({ navigation }) => {
   const [name, setName] = useState('');
   const [bgColor, setBgColor] = useState('');
+//getAuth: This returns the authentication handle of Firebase.
+//signInAnonymously: This allows the user to sign in anonymously.
+  const auth = getAuth();
+  const signInUser = () => {
+    signInAnonymously(auth)
+      .then(result => {
+        navigation.navigate("Chat", {userID: result.user.uid, name: name, 
+          bgColor: bgColor });
+        Alert.alert("Signed in Successfully!");
+      })
+      .catch((error) => {
+        Alert.alert("Unable to sign in, try later again.");
+      })
+  };
 
   const handleColorPress = (color) => {
     setBgColor(color);
+    //.setParams() is a method provided by React Navigation that allows you to update the parameters for the current screen.
     navigation.setParams({ bgColor: color });
   };
 
@@ -52,12 +68,11 @@ const Start = ({ navigation }) => {
             </View>
           </View>
           <Button
-            title='Start Chatting'
-            onPress={() => navigation.navigate('Chat', { name: name, bgColor: bgColor })}
-            accessibilityLabel="Start chatting"
-            accessibilityRole="button"
-            />
-
+                title='Start Chatting'
+                onPress={signInUser}
+                accessibilityLabel="Start chatting"
+                accessibilityRole="button"
+              />
         </View>
       </ImageBackground>
     </View>
