@@ -15,9 +15,10 @@ const Start = ({ navigation }) => {
           bgColor: bgColor });
         Alert.alert("Signed in Successfully!");
       })
-      .catch((error) => {
-        Alert.alert("Unable to sign in, try later again.");
-      })
+      .catch((err) => {
+        Alert.alert("Error", "Unable to signin anonymously");
+        console.log(err);
+      });
   };
 
   const handleColorPress = (color) => {
