@@ -1,10 +1,11 @@
 # Chat App
-#Intro:
+
+Intro:
 
 >Chat App for both Android/iOS created with React Native. The app provides users with a chat interface and options to share images and their location.
 
 
-#User Stories
+User Stories
 
 >As a new user, I want to be able to easily enter a chat room so I can quickly start talking to my friends and family.
 
@@ -19,7 +20,7 @@
 >As a user with a visual impairment, I want to use a chat app that is compatible with a screen reader so that I can engage with a chat interface.
 
 
-#Key Features
+Key Features
 
 >A page where users can enter their name and choose a background color for the chat screen before joining the chat.
 
@@ -27,10 +28,10 @@
 
 >The chat must provide users with two additional communication features: sending images and location data.
 
-Data gets stored online and offline
+>Data gets stored online and offline
 
 
-#Built with
+Built with
 
 >React Native
 
