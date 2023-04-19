@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { StyleSheet, View, KeyboardAvoidingView, Platform} from 'react-native';
 import { Bubble, GiftedChat , InputToolbar} from "react-native-gifted-chat";
-import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
+import { collection, query, orderBy, addDoc, onSnapshot } from "firebase/firestore";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -14,7 +14,7 @@ const Chat = ({ route, navigation, db, isConnected }) => {
 
   // function to handle sending new messages
   const onSend = (newMessages) => {
-      setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages))
+   addDoc(collection(db, 'messages'), newMessages[0]);
   }
 
 
