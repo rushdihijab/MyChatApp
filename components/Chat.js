@@ -25,6 +25,7 @@ const Chat = ({ route, navigation, db, isConnected }) => {
     const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
     unsubMessages = onSnapshot(q, (docs) => {
       let newMessages = [];
+      console.log('Received messages from Firebase:', docs);
       docs.forEach(doc => {
         newMessages.push({
           id: doc.id,
@@ -46,8 +47,8 @@ const Chat = ({ route, navigation, db, isConnected }) => {
 
   const cacheMessages = async (messagesToCache) => {
     try {
+        console.log('Caching messages:', messagesToCache);
         await AsyncStorage.setItem('messages', JSON.stringify(messagesToCache));
-        console.log('Messages cached successfully:', messagesToCache);
     } catch (error) {
         console.log('Error caching messages:', error.message);
     };
