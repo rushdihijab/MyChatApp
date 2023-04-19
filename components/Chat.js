@@ -9,7 +9,7 @@ const Chat = ({ route, navigation, db, isConnected }) => {
 
   const { name, bgColor } = route.params;
   const [messages, setMessages] = useState([]);
-  let unsubMessages
+  
 
 
   // function to handle sending new messages
@@ -47,22 +47,24 @@ const Chat = ({ route, navigation, db, isConnected }) => {
   const cacheMessages = async (messagesToCache) => {
     try {
         await AsyncStorage.setItem('messages', JSON.stringify(messagesToCache));
+        console.log('Messages cached successfully:', messagesToCache);
     } catch (error) {
-        console.log(error.message);
+        console.log('Error caching messages:', error.message);
     };
   }
 
   const loadCachedMessages = async () => {
-    try {
-      const cachedMessages = await AsyncStorage.getItem('messages');
-      if (cachedMessages) {
-        setMessages(JSON.parse(cachedMessages));
-      }
-    } catch (error) {
-      console.log('Error loading cached messages:', error.message);
+  try {
+    const cachedMessages = await AsyncStorage.getItem('messages');
+    if (cachedMessages) {
+      const parsedMessages = JSON.parse(cachedMessages);
+      setMessages(parsedMessages);
+      console.log('Cached messages loaded successfully:', parsedMessages);
     }
+  } catch (error) {
+    console.log('Error loading cached messages:', error.message);
   }
-
+}
   
   const renderInputToolbar = (props) => {
     if (isConnected) return <InputToolbar {...props} />;
