@@ -25,7 +25,6 @@ const Chat = ({ route, navigation, db, isConnected }) => {
     const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
     unsubMessages = onSnapshot(q, (docs) => {
       let newMessages = [];
-      console.log('Received messages from Firebase:', docs);
       docs.forEach(doc => {
         newMessages.push({
           id: doc.id,
