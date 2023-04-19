@@ -86,12 +86,10 @@ const Chat = ({ route, navigation, db, isConnected }) => {
       }}
     />
   }
-
 // // set up navigation options
 //   useEffect(() => {
 //     navigation.setOptions({ title: name,  backgroundColor: bgColor  });
 //   }, []);
-
   return (
 
     <View style={[styles.container, { backgroundColor: bgColor }]}>
