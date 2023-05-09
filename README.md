@@ -40,3 +40,14 @@ Built with
 >Expo
 
 >Firebase including Firestore
+
+Installation
+>Fork or download this repo.
+>npm install in the terminal to install all dependencies.
+
+How to use Chat App
+>Download and install the code.
+>Install Expo globally npm install --global expo-cli.
+>To start the app, run expo start or npm start.
+>To run the app on a device, install an emulator or EXPO GO on your smartphone.
+
